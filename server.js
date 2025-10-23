@@ -81,10 +81,10 @@ const dashboardData = {
 };
 
 // === Load frontend bundle ===
-const DASHBOARD_JS = readFileSync("web/src/dashboard.js", "utf8");
+const DASHBOARD_JS = readFileSync("client/src/dashboard.js", "utf8");
 const DASHBOARD_CSS = (() => {
   try {
-    return readFileSync("web/src/dashboard.css", "utf8");
+    return readFileSync("client/src/dashboard.css", "utf8");
   } catch {
     return "";
   }
@@ -131,7 +131,7 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 
 // === Optional: Serve static files for testing ===
-app.use(express.static("web/src"));
+app.use(express.static("client/src"));
 
 app.get('/mcp', (req, res) => {
   res.json(dashboardData);
